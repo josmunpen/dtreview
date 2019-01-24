@@ -1,0 +1,23 @@
+customisation.id			= Id
+customisation.systemName	=	System name
+customisation.bannerURL	=		Banner URL
+customisation.welcomeMessage	= Welcome message
+customisation.VATPercentage	= VAT percentage
+customisation.phoneNumberCountryCode	= Phone number Country code
+customisation.finderDuration	= Finder duration
+customisation.resultsNumber	= Number of results
+
+customisation.list				= Lista de categorías
+customisation.name 				= Nombre
+customisation.parentCategory		= Categoría padre
+customisation.edit			 	= Editar
+customisation.delete			 	= Eliminar
+customisation.edit.link		 	= Editar
+customisation.delete.link	 	= Eliminar
+customisation.list.create		= Nueva categoría
+customisation.save				= Guardar
+customisation.cancel				= Cancelar
+customisation.nombre				= Nombre
+
+customisation.commit.error		= Se encontraron errores
+customisation.confirm.delete		= ¿Eliminar esta personalización?

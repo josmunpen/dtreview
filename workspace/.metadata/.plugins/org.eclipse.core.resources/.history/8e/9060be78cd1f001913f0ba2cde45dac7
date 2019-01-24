@@ -1,0 +1,139 @@
+
+package controllers.administrator;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import services.CustomisationService;
+import controllers.AbstractController;
+import domain.Customisation;
+
+@Controller
+@RequestMapping("/customisation/administrator")
+public class CustomisationAdministratorController extends AbstractController {
+
+	@Autowired
+	private CustomisationService	customisationService;
+
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView res;
+		Collection<Customisation> customisations;
+
+		customisations = this.customisationService.findAll();
+
+		res = new ModelAndView("customisation/list");
+		res.addObject("customisations", customisations);
+		res.addObject("requestURI", "customisation/administrator/list.do");
+
+		return res;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid final Customisation customisation, final BindingResult binding, @RequestParam final String spamWords, @RequestParam final String cCM) {
+		ModelAndView result;
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(customisation);
+		else
+			try {
+
+				String[] spamWithEmpty;
+				final List<String> spamWordsNoEmpty = new ArrayList<String>();
+				if (spamWords.contains(",")) {
+					spamWithEmpty = spamWords.split("\\s*,\\s*");
+					for (int i = 0; i < spamWithEmpty.length; i++)
+						if (!spamWithEmpty[i].isEmpty())
+							spamWordsNoEmpty.add(spamWithEmpty[i]);
+				} else if (!spamWords.isEmpty())
+					spamWordsNoEmpty.add(spamWords);
+
+				customisation.setSpamWords(spamWordsNoEmpty);
+				this.customisationService.save(customisation);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(customisation, "customisation.commit.error");
+			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
+		ModelAndView res;
+		Customisation customisation;
+
+		customisation = this.customisationService.create();
+
+		res = this.createEditModelAndView(customisation);
+
+		return res;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int customisationId) {
+		ModelAndView result;
+		Customisation customisation;
+
+		customisation = this.customisationService.findOne(customisationId);
+		Assert.notNull(customisation);
+		result = this.createEditModelAndView(customisation);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final Customisation customisation) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(customisation, null);
+
+		return result;
+
+	}
+
+	protected ModelAndView createEditModelAndView(final Customisation customisation, final String message) {
+		ModelAndView result;
+		//final List<Customisation> custCol = (List<Customisation>) this.customisationService.findAll();
+		//final Customisation customisation = custCol.get(0);
+
+		final List<String> spam = (List<String>) customisation.getSpamWords();
+		final List<String> CCMakes = (List<String>) customisation.getCreditCardMakes();
+		String spamCommas = "";
+		String CCMakesCommas = "";
+
+		int j = 0;
+		while (j < spam.size()) {
+			spamCommas = spamCommas + spam.get(j) + ", ";
+			j++;
+		}
+		spamCommas = spamCommas.substring(0, spamCommas.length() - 2);
+
+		final int k = 0;
+		while (k < CCMakes.size()) {
+			CCMakesCommas = CCMakesCommas + CCMakes.get(j) + ", ";
+			j++;
+		}
+		CCMakesCommas = CCMakesCommas.substring(0, CCMakesCommas.length() - 2);
+
+		result = new ModelAndView("customisation/edit");
+		result.addObject("customisation", customisation);
+		result.addObject("message", message);
+		result.addObject("CCMakesCommas", CCMakesCommas);
+		result.addObject("spamCommas", spamCommas);
+
+		return result;
+	}
+}

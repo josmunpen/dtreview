@@ -1,0 +1,19 @@
+customisation.id			= Id
+customisation.systemName	=	System name
+customisation.bannerURL	=		Banner URL
+customisation.welcomeMessage	= Welcome message
+customisation.VATPercentage	= VAT percentage
+
+
+
+customisation.edit			 	= Edit
+customisation.delete			 	= Delete
+customisation.edit.link		 	= Edit
+customisation.delete.link	 	= Delete
+customisation.list.create		= New customisation
+customisation.save				= Save
+customisation.cancel				= Cancel
+customisation.nombre				= Nombre
+
+customisation.commit.error	= Errors
+customisation.confirm.delete		= Delete this customisation?

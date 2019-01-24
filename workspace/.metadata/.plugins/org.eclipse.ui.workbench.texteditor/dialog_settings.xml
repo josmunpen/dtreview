@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="237" key="DIALOG_WIDTH"/>
+		<item value="8" key="DIALOG_Y_ORIGIN"/>
+		<item value="955" key="DIALOG_X_ORIGIN"/>
+		<item value="362" key="DIALOG_HEIGHT"/>
+		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="true" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="personalización" key="selection"/>
+		<list key="findhistory">
+			<item value="garantía"/>
+			<item value="category"/>
+			<item value="custº"/>
+			<item value="cust"/>
+			<item value="Category"/>
+			<item value="dependency"/>
+			<item value="Box"/>
+			<item value="Actor"/>
+		</list>
+		<list key="replacehistory">
+			<item value="personalización"/>
+			<item value="customisation"/>
+			<item value="Customisation"/>
+			<item value="Actor"/>
+			<item value="Message"/>
+			<item value="socialprofile"/>
+			<item value="SocialProfile"/>
+			<item value="socialProfile"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="389" key="DIALOG_Y_ORIGIN"/>
+		<item value="609" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>

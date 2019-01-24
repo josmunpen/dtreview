@@ -1,0 +1,31 @@
+
+package utilities;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Testing {
+
+	/**
+	 * @param args
+	 */
+	public static void main(final String[] args) {
+
+		final List<String> cusSpam = new ArrayList<>();
+		cusSpam.add("Nigeria");
+		cusSpam.add("africa");
+		cusSpam.add("pene");
+		cusSpam.add("sida");
+
+		final List<String> spam = cusSpam;
+		String spamCommas = "";
+		int j = 0;
+		while (j < spam.size()) {
+			spamCommas = spamCommas + spam.get(j) + ", ";
+			j++;
+		}
+		System.out.println(spamCommas);
+
+	}
+
+}
