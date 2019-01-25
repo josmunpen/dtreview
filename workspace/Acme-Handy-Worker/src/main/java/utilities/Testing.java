@@ -40,6 +40,13 @@ public class Testing {
 
 		System.out.println(spamWordsNoEmpty);
 
+		System.out.println("==========");
+		final int k = 0;
+		//		while (k < CCMakes.size()) {
+		//			CCMakesCommas = CCMakesCommas + CCMakes.get(k) + ", ";
+		//			k++;
+		//		}
+		//		CCMakesCommas = CCMakesCommas.substring(0, CCMakesCommas.length() - 2);
 	}
 
 }

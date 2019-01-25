@@ -89,7 +89,7 @@
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="category.cancel" />"
-		onclick="javascript: relativeRedir('category/administrator/list.do');" />
+		onclick="javascript: relativeRedir('customisation/administrator/list.do');" />
 	<br />
 
 

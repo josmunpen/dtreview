@@ -61,6 +61,16 @@ public class CustomisationAdministratorController extends AbstractController {
 				} else if (!spamWords.isEmpty())
 					spamWordsNoEmpty.add(spamWords);
 
+				String[] ccWithEmpty;
+				final List<String> ccNoEmpty = new ArrayList<String>();
+				if (cCM.contains(",")) {
+					ccWithEmpty = cCM.split("\\s*,\\s*");
+					for (int i = 0; i < ccWithEmpty.length; i++)
+						if (!ccWithEmpty[i].isEmpty())
+							ccNoEmpty.add(ccWithEmpty[i]);
+				} else if (!cCM.isEmpty())
+					ccNoEmpty.add(cCM);
+				customisation.setCreditCardMakes(ccNoEmpty);
 				customisation.setSpamWords(spamWordsNoEmpty);
 				this.customisationService.save(customisation);
 				result = new ModelAndView("redirect:list.do");
